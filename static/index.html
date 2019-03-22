@@ -43,6 +43,7 @@ function debug(str) {
 debug("Test");
 
 world = {};
+i = true;
 
 //XXX: TODO Make this prettier!
 function drawCircle(context,entity) {
@@ -51,11 +52,20 @@ function drawCircle(context,entity) {
         lineWidth = 3;
         var x = entity["x"];
         var y = entity["y"];
-        //moveTo(x,y);
         fillStyle = entity["colour"];
         strokeStyle = fillStyle;
-        arc(x, y, (entity["radius"])?entity["radius"]:50, 0, 2.0 * Math.PI, false);  
-        stroke();                                
+        // From https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Drawing_shapes
+        for (var j = 0; j < 3; j++) {
+            const endAngle = Math.PI + (Math.PI * j) / 2;
+            arc(x, y, (entity["radius"])?entity["radius"]:50, 0, endAngle, false);
+        }
+        if (i) {
+            fill();
+            i = false;
+        } else {
+            stroke();
+            i = true;
+        }             
     }
 }
 
@@ -234,16 +244,16 @@ mouse = (function() {
 // Add the application specific mouse listeners!
 //XXX: TODO Make these prettier!
 mouse.mousedowners.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'blue'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'aquamarine','radius':20});
 });
 
 mouse.mouseuppers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'red'});
+    addEntityWithoutName({'x':x,'y':y,'colour':'mediumaquamarine', 'radius':50});
 });
 
 mouse.mousedraggers.push(function(x,y,clicked,e) {
-    addEntityWithoutName({'x':x,'y':y,'colour':'green',
-                          'radius':10});
+    addEntityWithoutName({'x':x,'y':y,'colour':'darkturquoise',
+                          'radius':30});
 });
 
 
