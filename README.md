@@ -59,3 +59,19 @@ Contributors
 * Mark Galloway
 * Abram Hindle
 * Cole Mackenzie
+
+References
+============
+
+For code from slides
+
+* https://github.com/uofa-cmput404/cmput404-slides/blob/master/examples/WebSocketsExamples/chat.py
+
+Stack Overflow
+* From https://stackoverflow.com/questions/20646822/how-to-serve-static-files-in-flask, Credits to atupal
+
+Canvas Guide 
+* https://developer.mozilla.org/en-US/docs/Web/API/Canvas_API/Tutorial/Basic_usage 
+* https://www.w3schools.com/tags/ref_canvas.asp
+
+
